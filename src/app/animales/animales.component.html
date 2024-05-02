@@ -1,0 +1,49 @@
+<div class="container" id="sect1">
+  <div class="row justify-content-center">
+    <div class="col-md-12">
+      <h2>Mascota</h2>
+      <br>
+      <div class="row">
+        <div class="col-md-2">
+          <button type="button" class="btn btn-success" (click)="crearMascota()">Agregar mascota</button>
+        </div>
+        <div class="col-md-10">
+          <input class="form-control me-2" type="search" placeholder="Buscar por nombre ó dueño" aria-label="Search"
+            (keyup)="buscar($event)">
+        </div>
+      </div>
+      <br>
+      <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">Nombre</th>
+            <th scope="col">Raza</th>
+            <th scope="col">Peso</th>
+            <th scope="col">Edad</th>
+            <th scope="col">Color</th>
+            <th scope="col">Dueño</th>
+            <th scope="col">Tipo</th>
+            <th scope="col">Teléfono</th>
+            <th scope="col">Email</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let animal of animales">
+            <td>{{animal.data.nombre}}</td>
+            <td>{{animal.data.raza}}</td>
+            <td>{{animal.data.peso}}</td>
+            <td>{{animal.data.edad}}</td>
+            <td>{{animal.data.color}}</td>
+            <td>{{animal.data.dueno}}</td>
+            <td>{{animal.data.tipo}}</td>
+            <td>{{animal.data.telefono}}</td>
+            <td>{{animal.data.email}}</td>
+            <td><button type="button" class="btn btn-secondary" (click)="editarMascota(animal.id)">Editar</button></td>
+            <td><button type="button" class="btn btn-danger" (click)="eliminarMascota(animal.id)">Eliminar</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>

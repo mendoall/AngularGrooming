@@ -1,0 +1,41 @@
+<div class="container ">
+  <div class="row justify-content-center">
+    <div class="col-md-12">
+      <h2>Citas</h2>
+      <br>
+      <div class="row">
+        <div class="col-md-2">
+          <button type="button" class="btn btn-success" (click)="crearCita()">Agregar cita</button>
+        </div>
+        <div class="col-md-10">
+          <input class="form-control me-2" type="search" placeholder="Buscar por nombre de mascota ó tipo" aria-label="Search" (keyup)="buscar($event)">
+        </div>
+      </div>
+      <br>
+      <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">Nombre</th>
+            <th scope="col">Tipo</th>
+            <th scope="col">Fecha</th>
+            <th scope="col">Hora</th>
+            <th scope="col">Observaciones</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let cita of citas">
+            <td>{{ cargarNombreMascota(cita.data.idAnimal) }}</td>
+            <td>{{cita.data.tipo}}</td>
+            <td>{{ convertirFecha(cita.data.fecha) }}</td>
+            <td>{{ convertirHora(cita.data.hora) }}</td>
+            <td>{{cita.data.observaciones}}</td>
+            <td><button type="button" class="btn btn-secondary" (click)="editarCita(cita.id)">Editar</button></td>
+            <td><button type="button" class="btn btn-danger"
+                (click)="eliminarCita(cita.id, cita.data.idAnimal)">Eliminar</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>

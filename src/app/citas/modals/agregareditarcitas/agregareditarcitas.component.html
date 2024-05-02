@@ -1,0 +1,61 @@
+<div class="modal-header">
+  <h4 class="modal-title">{{ args.title }} Cita</h4>
+</div>
+<div class="modal-body">
+  <div class="form-group">
+    <div class="row">
+      <div class="col">
+        <label for="nombre">Mascota</label>
+        <select class="form-select" aria-label="Default select example" [(ngModel)]="args.data.idAnimal">
+          <option *ngFor="let data of args.nombreMascotas" value="{{data.id}}">{{data.data.nombre}}</option>
+        </select>
+      </div>
+      <div class="col">
+        <label for="tipo">Tipo</label>
+        <select class="form-select" aria-label="Default select example" [(ngModel)]="args.data.tipo">
+          <option value="Baño">Baño</option>
+          <option value="Gromming">Gromming</option>
+          <option value="Paquete completo">Paquete completo</option>
+        </select>
+      </div>
+    </div>
+  </div>
+  <br />
+  <div class="form-group">
+    <div class="row">
+      <div class="col">
+        <label for="color">Fecha</label>
+        <br />
+        <div class="input-group">
+          <input class="form-control" placeholder="dd-mm-yyyy" name="dp" [(ngModel)]="args.data.fecha" ngbDatepicker
+            #d="ngbDatepicker" />
+          <button class="btn btn-outline-secondary bi bi-calendar3" (click)="d.toggle()" type="button"></button>
+        </div>
+      </div>
+      <div class="col">
+        <label for="edad">Hora</label>
+        <ngb-timepicker [(ngModel)]="args.data.hora" [hourStep]="1" [minuteStep]="30" [meridian]="true" />
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="raza">Observaciones</label>
+    <textarea type="text" class="form-control" [(ngModel)]="args.data.observaciones" required></textarea>
+    <!-- <input type="text" class="form-control" [(ngModel)]="args.data.observaciones" required /> -->
+  </div>
+  <div class="form-group">
+    <label for="peso">Ubicación</label>
+    <google-map [options]="mapOptions" width="100%" (mapClick)="createMapClick($event)" >
+      <map-marker *ngFor="let spot of args.markers" [position]="{ lat: spot.lat, lng: spot.lng }"
+        [options]="markerOptions"></map-marker>
+    </google-map>
+    <br />
+    <button type="button" class="btn btn-outline-dark" (click)="refrescarMapa()">
+      Refrescar Ubicación
+    </button>
+  </div>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-success" (click)="args.almacenar()">Guardar</button>
+  <button type="button" class="btn btn-outline-dark" (click)="args.closeModal()">Cerrar</button>
+</div>

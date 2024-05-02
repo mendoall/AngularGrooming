@@ -1,0 +1,78 @@
+<div class="modal-header">
+  <h4 class="modal-title">{{ args.title }} Mascota</h4>
+</div>
+<div class="modal-body">
+  <div class="form-group">
+    <div class="row">
+      <div class="col">
+        <label for="nombre">Nombre</label>
+        <input type="text" class="form-control" [(ngModel)]="args.data.nombre" required />
+      </div>
+      <div class="col">
+        <label for="tipo">Tipo</label>
+        <select class="form-select" aria-label="Default select example" [(ngModel)]="args.data.tipo">
+          <option value="Perro">Perro</option>
+          <option value="Gato">Gato</option>
+        </select>
+      </div>
+    </div>
+  </div>
+  <br />
+  <div class="form-group">
+    <div class="row">
+      <div class="col">
+        <label for="color">Color</label>
+        <input type="text" class="form-control" [(ngModel)]="args.data.color" required />
+      </div>
+      <div class="col">
+        <label for="edad">Edad</label>
+        <input type="text" class="form-control" [(ngModel)]="args.data.edad" required />
+      </div>
+    </div>
+  </div>
+  <br />
+  <div class="form-group">
+    <div class="row">
+      <div class="col">
+        <label for="raza">Raza</label>
+        <input type="text" class="form-control" [(ngModel)]="args.data.raza" required />
+      </div>
+      <div class="col">
+        <label for="peso">Peso</label>
+        <input type="text" class="form-control" [(ngModel)]="args.data.peso" required />
+      </div>
+    </div>
+  </div>
+  <br />
+  <div class="form-control">
+    <input type="file" class="file-input" (change)="cargarArchivo($event)" accept="image/*" #fileUpload />
+  </div>
+  <br />
+  <div class="form-control" *ngIf="args.data.foto">
+    <img [src]="args.data.foto" class="imgEstio">
+  </div>
+  <br />
+  <hr>
+  <br>
+  <div class="form-group">
+    <label for="dueno">Nombre del dueño</label>
+    <input type="text" class="form-control" [(ngModel)]="args.data.dueno" required />
+  </div>
+  <br>
+  <div class="form-group">
+    <div class="row">
+      <div class="col">
+        <label for="telefono">Teléfono</label>
+        <input type="text" class="form-control" [(ngModel)]="args.data.telefono" required />
+      </div>
+      <div class="col">
+        <label for="email">Email</label>
+        <input type="text" class="form-control" [(ngModel)]="args.data.email" required />
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-success" (click)="args.almacenar()">Guardar</button>
+  <button type="button" class="btn btn-outline-dark" (click)="args.closeModal()">Cerrar</button>
+</div>

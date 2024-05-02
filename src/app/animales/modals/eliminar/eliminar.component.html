@@ -1,0 +1,10 @@
+<div class="modal-header">
+  <h4 class="modal-title">Eliminar Mascota</h4>
+</div>
+<div class="modal-body">
+    ¿Esta seguro que desea eliminar la mascota {{ args.nombre}}?
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-success" (click)="args.eliminar()">Aceptar</button>
+  <button type="button" class="btn btn-outline-dark" (click)="args.closeModal()">Cerrar</button>
+</div>
